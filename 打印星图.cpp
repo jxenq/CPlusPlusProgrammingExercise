@@ -19,7 +19,7 @@ int main()
 		{
 			cout << "*";
 		}
-		cout << '\n';
+		cout << endl;
 		space -= 2;
 	}
 	space = 5;
@@ -37,7 +37,7 @@ int main()
 		{
 			cout << " ";
 		}
-		cout << '\n';
+		cout << endl;
 		space -= 2;
 	}
 }
