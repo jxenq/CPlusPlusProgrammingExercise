@@ -8,7 +8,7 @@ public:
     width = 1;
     height = 1;
   }
-  Rectangle(double x,double y)//ÓĞ²Î¹¹Ôìº¯Êı 
+  Rectangle(double x,double y)//æœ‰å‚æ„é€ å‡½æ•°
 	{
 		width=x;
 		height=y;
