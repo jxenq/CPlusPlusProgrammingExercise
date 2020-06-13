@@ -3,12 +3,12 @@ using namespace std;
 typedef struct queue{
 	int x;
 	struct queue *next;
-} LinkList;	//½á¹¹Ìå 
+} LinkList;
 class  MyQueue{
-	LinkList *head, *node, *end; //½á¹¹Ìå³ÉÔ± 
-	static int j;	//¶ÓÁÐ³¤¶È 
+	LinkList *head, *node, *end;
+	static int j;	//é˜Ÿåˆ—é•¿åº¦ 
 	public:
-		MyQueue()		//¹¹Ôìº¯Êý 
+		MyQueue()		//æž„é€ å‡½æ•° 
 		{
 			head=NULL; 
 			node=NULL;
@@ -17,27 +17,27 @@ class  MyQueue{
 			end=head;
 			
 		}
-		void push(int x)	//Èë¶Óº¯Êý 
+		void push(int x)	//å…¥é˜Ÿå‡½æ•° 
 		{
 	    	node=new LinkList;
 			node->x=x;
 			end->next=node;
 			node=end; 
-			j++;			//¶ÓÁÐ³¤¶È++ 
+			j++;			//é˜Ÿåˆ—é•¿åº¦++ 
 		}
-		void pop()		//³ö¶Óº¯Êý 
+		void pop()		//å‡ºé˜Ÿå‡½æ•° 
 		{
-			if(j==0)				//¶ÓÁÐÎª¿Õ 
+			if(j==0)				//é˜Ÿåˆ—ä¸ºç©º 
 		    	cout<<"Invalid"<<endl;
 			else
 			     {
-			     	cout<<head->next->x<<endl;	//Êä³ö¶ÓÊ×ÔªËØ 
+			     	cout<<head->next->x<<endl;	//è¾“å‡ºé˜Ÿé¦–å…ƒç´  
 			     	head->next=head->next->next;
-			     	delete head->next;				//Í·Ò»¸öÉ¾ÁË 
+			     	delete head->next;				//å¤´ä¸€ä¸ªåˆ äº† 
 		        	j--;
 				 }
 		}
-		int size()		//Çó¶ÓÁÐ³¤¶Èº¯Êý 
+		int size()		//æ±‚é˜Ÿåˆ—é•¿åº¦å‡½æ•° 
 		{
 			return j;
 		}
@@ -46,7 +46,7 @@ int MyQueue::j=0;
 
 int main(void)
 {
-	MyQueue ob;		//¶ÔÏó 
+	MyQueue ob;		//å¯¹è±¡ 
 	int n,i,c,d;
 	scanf("%d",&n); 
 	for(i=0;i<n;i++)
