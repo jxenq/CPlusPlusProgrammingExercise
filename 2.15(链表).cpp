@@ -6,32 +6,32 @@ using namespace std;
 #define ERROR 0
 
 typedef struct LNode {
-	int data; //½áµãµÄÊı¾İÓò
-	struct LNode *next; //½áµãµÄÖ¸ÕëÓò
-} LNode, *List; //LinkListÎªÖ¸Ïò½á¹¹ÌåLNodeµÄÖ¸ÕëÀàĞÍ
+	int data; //ç»“ç‚¹çš„æ•°æ®åŸŸ
+	struct LNode *next; //ç»“ç‚¹çš„æŒ‡é’ˆåŸŸ
+} LNode, *LinkList; //LinkListä¸ºæŒ‡å‘ç»“æ„ä½“LNodeçš„æŒ‡é’ˆç±»å‹
 
 int n, m;
 char st = 'A';
 
-void InitList(List &L) //´´½¨Á´±í
+void InitList(List &L) //åˆ›å»ºé“¾è¡¨
 {
 	L = new LNode;
 	L->next = NULL;
 }
 
-void ListInput(List &L, int n) //Á´±íÊı¾İµÄÊäÈë
+void ListInput(List &L, int n) //é“¾è¡¨æ•°æ®çš„è¾“å…¥
 {
 	int i;
 	List p, r;
 	r = L;
 	char filename[20] = { 0 };
-	cout << "ÇëÊäÈëË³Ğò±íL" << st << "µÄÊı¾İÎÄ¼şÃû³Æ£¨ÎÄ¼şÃû+¡°.txt¡±£¬ÈçList" << st << ".txt£©£º" << endl;
+	cout << "è¯·è¾“å…¥é¡ºåºè¡¨L" << st << "çš„æ•°æ®æ–‡ä»¶åç§°ï¼ˆæ–‡ä»¶å+â€œ.txtâ€ï¼Œå¦‚List" << st << ".txtï¼‰ï¼š" << endl;
 	++st;
 	gets(filename);
 	fstream file;
 	file.open(filename);
 	if (!file) {
-		cout << "Î´ÕÒµ½Ïà¹ØÎÄ¼ş£¬ÎŞ·¨´ò¿ª£¡" << endl;
+		cout << "æœªæ‰¾åˆ°ç›¸å…³æ–‡ä»¶ï¼Œæ— æ³•æ‰“å¼€ï¼" << endl;
 		exit(ERROR);
 	}
 	while (!file.eof()) {
@@ -45,7 +45,7 @@ void ListInput(List &L, int n) //Á´±íÊı¾İµÄÊäÈë
 	file.close();
 }
 
-bool LocateElem(List L, int e) //ÅĞ¶ÏListÀïÓĞÃ»ÓĞeÕâ¸öÔªËØ
+bool LocateElem(List L, int e) //åˆ¤æ–­Listé‡Œæœ‰æ²¡æœ‰eè¿™ä¸ªå…ƒç´ 
 {
 	List p;
 	p = L->next;
@@ -57,7 +57,7 @@ bool LocateElem(List L, int e) //ÅĞ¶ÏListÀïÓĞÃ»ÓĞeÕâ¸öÔªËØ
 	return false;
 }
 
-void ListInsert(List &L, int e) //½«e²åÈëµ½ListÖĞ
+void ListInsert(List &L, int e) //å°†eæ’å…¥åˆ°Listä¸­
 {
 	List p;
 	p = new LNode;
@@ -66,7 +66,7 @@ void ListInsert(List &L, int e) //½«e²åÈëµ½ListÖĞ
 	L->next = p;
 }
 
-void ListOutput(List L) //Êä³öList
+void ListOutput(List L) //è¾“å‡ºList
 {
 	List p;
 	p = L->next;
@@ -77,15 +77,15 @@ void ListOutput(List L) //Êä³öList
 	cout << endl;
 }
 
-void unionList(List &LA, List LB) //Ëã·¨2.15 ÏßĞÔ±íµÄºÏ²¢£¨Á´±í£©
+void unionList(List &LA, List LB) //ç®—æ³•2.15 çº¿æ€§è¡¨çš„åˆå¹¶ï¼ˆé“¾è¡¨ï¼‰
 {
-	//½«ËùÓĞÔÚÏßĞÔ±íLBÖĞµ«²»ÔÚLAÖĞµÄÊı¾İÔªËØ²åÈëµ½LAÖĞ
+	//å°†æ‰€æœ‰åœ¨çº¿æ€§è¡¨LBä¸­ä½†ä¸åœ¨LAä¸­çš„æ•°æ®å…ƒç´ æ’å…¥åˆ°LAä¸­
 	int e;
 	List p;
 	p = LB->next;
 	while (p != NULL) {
 		e = p->data;
-		if (!LocateElem(LA, e)) //LAÖĞ²»´æÔÚºÍeÏàÍ¬µÄÊı¾İÔªËØ£¬Ôò²åÈëÖ®
+		if (!LocateElem(LA, e)) //LAä¸­ä¸å­˜åœ¨å’Œeç›¸åŒçš„æ•°æ®å…ƒç´ ï¼Œåˆ™æ’å…¥ä¹‹
 			ListInsert(LA, e);
 		p = p->next;
 	}
@@ -103,7 +103,7 @@ int main() {
 
 	unionList(LA, LB);
 
-	cout << "LAºÍLBºÏ²¢ºóµÄ¼¯ºÏÎª£º\n";
+	cout << "LAå’ŒLBåˆå¹¶åçš„é›†åˆä¸ºï¼š\n";
 	ListOutput(LA);
 	return 0;
 }
