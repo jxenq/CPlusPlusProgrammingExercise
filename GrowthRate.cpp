@@ -3,6 +3,9 @@
 #include <iomanip>
 #include <cmath>
 #include <locale>
+#include<sstream>
+
+using namespace std;
 
 std::string Ranking(double GrowthRate)
 {
@@ -20,7 +23,7 @@ int main() {
     std::cin >> a;
     std::cout << "Enter the number of years: ";
     std::cin >> n;
-    int GDP[a][n + 1];
+    long int GDP[a][n + 1];
     double GR[a][n];
     double value[a];
     std::string CountryName[a];
@@ -60,7 +63,13 @@ int main() {
                 std::cout << std::setw(5) << std::left << year + 1;
                 std::cout << std::setw(7) << std::left << "|";
                 std::cout << "$";
-                std::cout << std::setw(16) << std::fixed << std::setprecision(2) << GDP[i][year];
+                std::string str;
+                str = to_string(GDP[i][year]);
+                size_t len = str.length();
+                for(int index = (int) len-3; index > 0; index -= 3)
+                    str.insert(index, ",");
+                str += ".00";
+                std::cout << std::setw(16) << str;
                 std::cout.imbue(std::locale());
                 std::cout << std::setw(7) << std::left << "|";
                 std::cout << std::fixed << std::setprecision(2) << GR[i][year] * 100;
