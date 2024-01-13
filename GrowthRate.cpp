@@ -60,7 +60,7 @@ int main() {
         for(int year = 1; year <= n; year++) {
                 GR[i][year] = static_cast<double>(GDP[i][year] - GDP[i][year - 1]) / GDP[i][year - 1];
                 GR[i][0] += GR[i][year];
-                std::cout << std::setw(5) << std::left << year + 1;
+                std::cout << std::setw(5) << std::left << year;
                 std::cout << std::setw(7) << std::left << "|";
                 std::cout << "$";
                 std::string str;
@@ -73,7 +73,7 @@ int main() {
                 std::cout.imbue(std::locale());
                 std::cout << std::setw(7) << std::left << "|";
                 std::cout << std::fixed << std::setprecision(2) << GR[i][year] * 100;
-                std::cout << std::setw(17 - std::to_string(GR[i][year]).length()) << "%";
+                std::cout << std::setw(17 - std::to_string(GR[i][year] * 100).length()) << "%";
                 std::cout << std::setw(4) << "|";
                 std::cout << Ranking(GR[i][year]);
                 std::cout << std::endl;
